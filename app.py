@@ -229,6 +229,8 @@ def update_graph(selected_models, slider_range):
         )
         return fig
 
+server = app.server
+
 
 # Run App
 if __name__ == "__main__":
