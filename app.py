@@ -15,7 +15,7 @@ import os
 from datetime import datetime
 
 # Load all model CSVs (Assuming all CSVs are in the same folder)
-models_dir = "/Users/jahnavipb/Documents/*MST_PRJ/forecast_dashboard/model_data"
+models_dir = "model_data/"
 
 # Check if directory exists
 if not os.path.exists(models_dir):
