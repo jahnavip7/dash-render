@@ -67,6 +67,8 @@ date_list = list(pd.date_range(start=min_date, end=max_date, freq="D"))
 # Initialize Dash App
 app = dash.Dash(__name__)
 
+server = app.server
+
 # Layout
 app.layout = html.Div([
     html.H1("Time-Series Forecast Dashboard",
