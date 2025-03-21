@@ -15,7 +15,7 @@ import os
 from datetime import datetime
 
 # Load all model CSVs (Assuming all CSVs are in the same folder)
-models_dir = "model_data/"
+models_dir = "model_data\"
 
 # Check if directory exists
 if not os.path.exists(models_dir):
@@ -166,12 +166,15 @@ def update_graph(selected_models, slider_range):
                 pred_col = "predicted values"
 
             if pred_col:
+                # Clean up model name for display
+                display_name = model.replace(
+                    "results-csv_", "").replace("result-csv_", "")
                 all_values.extend(df_filtered[pred_col].dropna().tolist())
                 fig.add_trace(go.Scatter(
                     x=df_filtered["dates"],
                     y=df_filtered[pred_col],
                     mode="lines",
-                    name=f"Predicted Values",
+                    name=f"{display_name}",  # Just show the model name
                     line=dict(dash='dash', width=2, shape='spline')
                 ))
 
@@ -199,7 +202,8 @@ def update_graph(selected_models, slider_range):
                     y=0.99,
                     xanchor="left",
                     x=0.01,
-                    bgcolor='rgba(255, 255, 255, 0.8)'
+                    bgcolor='rgba(255, 255, 255, 0.8)',
+                    font=dict(size=12)
                 ),
                 margin=dict(l=50, r=50, t=80, b=50),
                 showlegend=True,
@@ -228,8 +232,6 @@ def update_graph(selected_models, slider_range):
             }
         )
         return fig
-
-server = app.server
 
 
 # Run App
